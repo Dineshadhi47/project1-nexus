@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url(bg4.jpg) no-repeat ;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: transparent;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 45px 20px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 40px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return validateForm('loginForm')">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="error-message" id="loginError"></div>
+    </div>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm" onsubmit="return validateForm('signupForm')">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="error-message" id="signupError"></div>
+    </div>
+
+    <script>
+        function validateForm(formId) {
+            var form = document.getElementById(formId);
+            var username = form.username.value;
+            var password = form.password.value;
+            if (username === "" || password === "") {
+                document.getElementById(formId + 'Error').innerText = "All fields are required.";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
